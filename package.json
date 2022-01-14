@@ -7,7 +7,7 @@
     "start": "node server.js",
     "start:dev": "cd Client && npm start",
     "dev": "nodemon server.js",
-     "build": "cd Client && npm run build",
+     "build": "cd Client && npm run build"
     
   },
   "keywords": [],
