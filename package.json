@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "client": "cd client && npm start",
     "start": "node server.js",
-    "start:dev": "cd Client && npm start",
-    "dev": "nodemon server.js",
-     "build": "cd Client && npm run build"
+    "server":"nodemon server.js",
+    "develop": "concurrently  \"npm run client\" \"npm run start\""
     
   },
   "keywords": [],
