@@ -6,7 +6,7 @@
   "scripts": {
     "client": "cd Client && npm start",
     "start": "nodemon server.js",
-    "develop": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\""
+    "develop": "concurrently  \"npm run client\" \"npm run start\""
   },
   "keywords": [],
   "author": "",
