@@ -7,7 +7,7 @@
     "client": "cd client && npm start",
     "start": "node server.js",
     "server":"nodemon server.js",
-    "develop": "concurrently  \"npm run client\" \"npm run start\""
+    "develop": "concurrently  \"npm run client\" \"npm run server\""
     
   },
   "keywords": [],
