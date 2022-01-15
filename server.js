@@ -12,9 +12,17 @@ const HOST = '0.0.0.0';
 const path = require('path');
 
 // used to serve static files from public directory
+app.use(cors());
+if(process.env.NODE_ENV==="production"){
 app.use(express.static(path.join(__dirname, 'client')));
 app.use('/src', express.static(path.join(__dirname, '..', 'client', 'src')))
-app.use(cors());
+
+app.get("*", (req,res)=>{
+res.sendFile(path.resolve(_dirname,"client","src","index.js"))
+});
+}
+
+
 
 app.get('/auth', function(req,res){
     // read token from header
@@ -56,7 +64,7 @@ async function verifyToken(req,res,next){
 
 // create user account
 app.get('/account/create/:name/:email/:password/:role', function (req, res) {
-
+        
     // check if account exists
     dal.find(req.params.email).
         then((users) => {
@@ -101,7 +109,7 @@ app.get('/account/login/:email/:password', function (req, res) {
 });
 
 // find user account
-app.get('/account/find/:email', function (req, res) {
+app.get('/account/find/email/:email', function (req, res) {
 
     dal.find(req.params.email).
         then((user) => {
