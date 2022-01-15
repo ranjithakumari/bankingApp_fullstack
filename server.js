@@ -4,22 +4,29 @@ var cors    = require('cors');
 var dal     = require('./dal.js');
 const admin   = require('./admin');
 const mongoose = require('mongoose');
-
+const router = express.Router();
 var PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0';
 
+const postRoutes = require("./postRoutes.js");
 
 const path = require('path');
 
 // used to serve static files from public directory
 app.use(cors());
+app.use("/api/v1/posts", postRoutes);
 if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname, 'client')));
-    app.use('/src', express.static(path.join(__dirname, '..', 'client', 'src')))
-    app.get("*", function (request, response) {
-        response.sendFile(path.resolve(__dirname, "./client/src", "index.js"));
-      });
-    
+    app.use(express.static(path.join(__dirname, '/client/build')));
+    app.get('*',(req,res)=>{
+        res.sendFile(path.join(__dirname,'client','build','index.html'));
+        })
+              
+}
+else
+{
+    app.get('/',(req,res)=>{
+    res.send("Api running");
+    })
 }
 
 
