@@ -15,7 +15,7 @@ const path = require('path');
 app.use(cors());
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, 'client')));
-    app.use('/src', express.static(path.join(__dirname, '..', 'client', 'public')))
+    app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')))
     
 
 }
