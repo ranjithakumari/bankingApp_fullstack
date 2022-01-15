@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use('/src', express.static(path.join(__dirname, '..', 'client', 'src')))
 
 app.get("*", (req,res)=>{
-res.sendFile(path.resolve(_dirname,"client","src","index.js"))
+res.sendFile(path.resolve(__dirname,"client","src","index.js"))
 });
 }
 
