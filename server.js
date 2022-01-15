@@ -14,9 +14,9 @@ const path = require('path');
 // used to serve static files from public directory
 app.use(cors());
 if(process.env.NODE_ENV === "production"){
-app.use(express.static('client/public'));
-//app.use('/src', express.static(path.join(__dirname, '..', 'client', 'src')))
-app.get('*',(req,res)=>{
+    app.use(express.static(path.join(__dirname, 'client')));
+    app.use('/src', express.static(path.join(__dirname, '..', 'client', 'public')))
+    app.get('/',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'client/public','index.html'));
 });
 }
