@@ -17,7 +17,6 @@ if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, 'client')));
     app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')))
     
-
 }
 
 

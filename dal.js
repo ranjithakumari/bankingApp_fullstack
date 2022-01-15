@@ -3,7 +3,7 @@ const MONGODB_URI = "mongodb+srv://Ranjitha:Ranjitha@cluster0.hkorj.mongodb.net/
 //const uri = process.env.MONGODB_URI;
 const url         = 'mongodb://localhost:27017/myFirstDatabase';
 let db            = null;
- 
+require("dotenv").config();
 // connect to mongo
 MongoClient.connect(MONGODB_URI, {useUnifiedTopology: true}, function(err, client) {
     console.log("Connected successfully to db server");
