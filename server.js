@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 var PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0';
+const path= require('path')
 
 // used to serve static files from public directory
 app.use(cors());
