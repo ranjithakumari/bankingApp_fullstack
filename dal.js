@@ -1,11 +1,20 @@
+const mongoose = require('mongoose');
+//const router = express.Router();
+var PORT = process.env.PORT || 8080;
+const HOST = '0.0.0.0';
+const user=require('./postRoutes.js');
+require("dotenv").config();
+const path = require('path');
+
 const MongoClient = require('mongodb').MongoClient;
-const MONGODB_URI = "mongodb+srv://Ranjitha:Ranjitha@cluster0.hkorj.mongodb.net/myproject?retryWrites=true&w=majority"
+const MONGODB_URI = "mongodb+srv://Ranjitha:Ranjitha@cluster0.hkorj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 //const uri = process.env.MONGODB_URI;
-const url         = 'mongodb://localhost:27017/myFirstDatabase';
+//const url         = 'mongodb://localhost:27017/myFirstDatabase';
 let db            = null;
 require("dotenv").config();
 // connect to mongo
-MongoClient.connect(MONGODB_URI, {useUnifiedTopology: true}, function(err, client) {
+MongoClient.connect(
+    MONGODB_URI, {useUnifiedTopology: true}, function(err, client) {
     console.log("Connected successfully to db server");
     // connect to myproject database
     db = client.db('myFirstDatabase');

@@ -8,30 +8,21 @@ const router = express.Router();
 var PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0';
 
-const postRoutes = require("./postRoutes.js");
-
-const path = require('path');
-
 // used to serve static files from public directory
 app.use(cors());
-app.use("/api/v1/posts", postRoutes);
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname, '/client/build')));
-    app.get('*',(req,res)=>{
-        res.sendFile(path.join(__dirname,'client','build','index.html'));
-        })
-              
-}
-else
-{
-    app.get('/',(req,res)=>{
-    res.send("Api running");
-    })
+
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, './client/build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    });
+    
 }
 
-
-
-app.get('/auth', function(req,res){
+  
+  app.get('/auth', function(req,res){
     // read token from header
     const idToken = req.headers.authorization
     console.log('header:', idToken);
@@ -68,6 +59,7 @@ async function verifyToken(req,res,next){
         return res.status(401).send('You are not authorized');        
     }
 }
+
 
 // create user account
 app.get('/account/create/:name/:email/:password/:role', function (req, res) {
@@ -156,8 +148,11 @@ app.get('/account/all', function (req, res) {
             res.send(docs);
     });
 });
+    
 
-
+    
+    
+    
 app.listen(PORT, HOST, () => {
     console.log(`Running on http://${HOST}:${PORT}`);
 });

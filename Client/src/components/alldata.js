@@ -6,7 +6,7 @@ export default function AllData(){
     const [data, setData] = React.useState(''); 
     const [balance, setBalance] = React.useState('');
     const [name, setName] = React.useState('');
-    
+
         React.useEffect(() => {          
             // fetch all accounts from API
             fetch('http://localhost:8080/account/all')
