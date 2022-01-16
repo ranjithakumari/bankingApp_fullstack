@@ -12,13 +12,8 @@ const path= require('path')
 // used to serve static files from public directory
 app.use(cors());
 
-
-
-    app.use(express.static(path.join(__dirname, './client/build')));
-  
+   app.use(express.static(path.join(__dirname, './client/build')));
     
-
-
   
   app.get('/auth', function(req,res){
     // read token from header
